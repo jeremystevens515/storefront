@@ -1,8 +1,60 @@
 body {
 	background-image: linear-gradient(
 		to bottom,
-		rgb(255, 255, 255),
+		rgb(225, 225, 255),
 		rgb(255, 225, 200)
 	);
 	min-height: 100vh;
+}
+/* ----------------------------------------------- */
+nav {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.nav-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding-bottom: 1rem;
+}
+
+.searchContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.home {
+	display: flex;
+	flex-direction: column;
+}
+
+/* .interest-section {
+	display: flex;
+	justify-content: center;
+} */
+
+/* section {
+	display: flex;
+	flex-direction: column;
+} */
+
+.interest-items {
+	display: flex;
+	gap: 0.5rem;
+	overflow: scroll;
+}
+
+.item-card {
+	border: 1px solid black;
+	border-radius: 0.5rem;
+	width: 15rem;
+	height: 15rem;
 }
