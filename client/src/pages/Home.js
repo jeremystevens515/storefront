@@ -5,6 +5,7 @@ export default function Home() {
     return (
         <div className="home">
             <h1>Top Picks for You!</h1>
+            <h4>The More You Spend, the More You Save</h4>
             {/* show advertisements based on user interests */}
             <div className="interest-section">
                 {users[0].interests.map((interest, index) => {
