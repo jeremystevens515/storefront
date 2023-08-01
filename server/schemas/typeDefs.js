@@ -15,7 +15,7 @@ type Item {
     _id: ID
     name: String
     description: String
-    price: Number
+    price: Int
     category: [Category]
     image: String
 }
@@ -24,6 +24,13 @@ type Category {
     _id: ID
     name: String
     items: [Item]
+}
+
+type Query {
+    users: [User]
+    items: [Item]
+    categories: [Category]
+}
 `;
 
 module.exports = typeDefs;

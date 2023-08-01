@@ -1,5 +1,4 @@
-import { items } from "../assets/db/items_db";
-import { users } from "../assets/db/users_db";
+
 
 export default function Home() {
     return (
@@ -7,7 +6,7 @@ export default function Home() {
             <h1>Top Picks for You!</h1>
             <h4>The More You Spend, the More You Save</h4>
             {/* show advertisements based on user interests */}
-            <div className="interest-section">
+            {/* <div className="interest-section">
                 {users[0].interests.map((interest, index) => {
                     return (
                         <section key={index}>
@@ -29,7 +28,7 @@ export default function Home() {
                         </section>
                     )
                 })}
-            </div>
+            </div> */}
         </div>
     )
 }
