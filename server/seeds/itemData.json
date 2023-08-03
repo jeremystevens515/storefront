@@ -3,7 +3,7 @@
 		"name": "GloboWidget",
 		"description": "A fun and colorful widget for your desktop",
 		"price": 1299,
-		"category": ["62738a3aef59c8f81c12c3a1"],
+		"category": [],
 		"image": "globo_widget.jpg"
 	},
 
@@ -11,7 +11,7 @@
 		"name": "LaserSaber",
 		"description": "A futuristic saber with laser blade for cosplay",
 		"price": 2995,
-		"category": ["62738a3aef59c8f81c12c3a2"],
+		"category": [],
 		"image": "laser_saber.jpg"
 	},
 
@@ -19,7 +19,7 @@
 		"name": "AquaGadget",
 		"description": "A handy underwater tool for deep-sea explorations",
 		"price": 7999,
-		"category": ["62738a3aef59c8f81c12c3a3"],
+		"category": [],
 		"image": "aqua_gadget.jpg"
 	},
 
@@ -27,7 +27,7 @@
 		"name": "SkyGlider",
 		"description": "A lightweight glider for breathtaking sky adventures",
 		"price": 14950,
-		"category": ["62738a3aef59c8f81c12c3a4"],
+		"category": [],
 		"image": "sky_glider.jpg"
 	},
 
@@ -35,7 +35,7 @@
 		"name": "EcoGrower",
 		"description": "A smart gardening system for growing plants indoors",
 		"price": 8999,
-		"category": ["62738a3aef59c8f81c12c3a5"],
+		"category": [],
 		"image": "eco_grower.jpg"
 	},
 
@@ -43,7 +43,7 @@
 		"name": "StellarCompass",
 		"description": "A digital compass for accurate navigation in space",
 		"price": 19900,
-		"category": ["62738a3aef59c8f81c12c3a6"],
+		"category": [],
 		"image": "stellar_compass.jpg"
 	},
 
@@ -51,7 +51,7 @@
 		"name": "HyperBoard",
 		"description": "An advanced hoverboard for smooth urban rides",
 		"price": 129950,
-		"category": ["62738a3aef59c8f81c12c3a4"],
+		"category": [""],
 		"image": "hyper_board.jpg"
 	},
 
@@ -59,7 +59,7 @@
 		"name": "MechaBot",
 		"description": "A remote-controlled robot for interactive play",
 		"price": 4999,
-		"category": ["62738a3aef59c8f81c12c3a7"],
+		"category": [],
 		"image": "mecha_bot.jpg"
 	},
 
@@ -67,7 +67,7 @@
 		"name": "BioTracker",
 		"description": "A health monitoring device for tracking vital signs",
 		"price": 7950,
-		"category": ["62738a3aef59c8f81c12c3a8"],
+		"category": [],
 		"image": "bio_tracker.jpg"
 	},
 
@@ -75,7 +75,7 @@
 		"name": "AeroDrone",
 		"description": "An agile drone with HD camera for aerial photography",
 		"price": 24900,
-		"category": ["62738a3aef59c8f81c12c3a9"],
+		"category": [],
 		"image": "aero_drone.jpg"
 	},
 
@@ -83,7 +83,7 @@
 		"name": "MegaBlaster",
 		"description": "A powerful sound system for parties and events",
 		"price": 29995,
-		"category": ["62738a3aef59c8f81c12c3aa"],
+		"category": [],
 		"image": "mega_blaster.jpg"
 	},
 
@@ -91,7 +91,7 @@
 		"name": "QuantumVR",
 		"description": "An immersive virtual reality headset with quantum tech",
 		"price": 39900,
-		"category": ["62738a3aef59c8f81c12c3ab"],
+		"category": [],
 		"image": "quantum_vr.jpg"
 	},
 
@@ -99,7 +99,7 @@
 		"name": "AquaFit",
 		"description": "A waterproof fitness tracker for swimmers",
 		"price": 5999,
-		"category": ["62738a3aef59c8f81c12c3a8"],
+		"category": [],
 		"image": "aqua_fit.jpg"
 	},
 
@@ -107,7 +107,7 @@
 		"name": "SolarCharger",
 		"description": "A portable solar charger for eco-friendly charging",
 		"price": 3450,
-		"category": ["62738a3aef59c8f81c12c3ac"],
+		"category": [],
 		"image": "solar_charger.jpg"
 	},
 
@@ -115,7 +115,7 @@
 		"name": "BioGloves",
 		"description": "Smart gloves for gesture-controlled interactions",
 		"price": 8995,
-		"category": ["62738a3aef59c8f81c12c3a7"],
+		"category": [],
 		"image": "bio_gloves.jpg"
 	},
 
@@ -123,7 +123,7 @@
 		"name": "NeoBike",
 		"description": "A futuristic electric bike for urban commuting",
 		"price": 79900,
-		"category": ["62738a3aef59c8f81c12c3a4"],
+		"category": [],
 		"image": "neo_bike.jpg"
 	},
 
@@ -131,7 +131,7 @@
 		"name": "NanoDrone",
 		"description": "A mini drone with nano-sized design and agility",
 		"price": 4950,
-		"category": ["62738a3aef59c8f81c12c3a9"],
+		"category": [],
 		"image": "nano_drone.jpg"
 	},
 
@@ -139,7 +139,7 @@
 		"name": "MindTune",
 		"description": "A brainwave headset for enhancing focus and meditation",
 		"price": 14999,
-		"category": ["62738a3aef59c8f81c12c3ab"],
+		"category": [],
 		"image": "mind_tune.jpg"
 	},
 
@@ -147,7 +147,7 @@
 		"name": "AstroGoggles",
 		"description": "High-tech goggles for stargazing and astronomy",
 		"price": 12900,
-		"category": ["62738a3aef59c8f81c12c3a6"],
+		"category": [],
 		"image": "astro_goggles.jpg"
 	},
 
@@ -155,7 +155,7 @@
 		"name": "ElectroSkates",
 		"description": "Electric skates for a thrilling ride on the pavement",
 		"price": 17950,
-		"category": ["62738a3aef59c8f81c12c3a4"],
+		"category": [],
 		"image": "electro_skates.jpg"
 	}
 ]
