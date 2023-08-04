@@ -1,13 +1,16 @@
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_ITEMS } from '../utils/queries';
 
-export default function ItemManager() {
-    const { loading, error, data } = useQuery(QUERY_ALL_ITEMS);
+import EditModal from '../components/editModal';
 
+export default function ItemManager() {
+    const [showModal, setShowModal] = useState(false);
+
+    const { loading, error, data } = useQuery(QUERY_ALL_ITEMS);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message}</p>;
-
-
 
     return (
         <div>
@@ -27,10 +30,13 @@ export default function ItemManager() {
                                 <p>Price: ${item.price / 100} USD</p>
                                 <p>Categories: {item.category.name}</p>
                                 <div className="btn-container">
-                                    <button className="edit-btn">Edit</button>
+                                    <button className="edit-btn" onClick={() => {
+                                        setShowModal(true);
+                                    }}>Edit</button>
                                 </div>
                             </div>
                         </div>
+                        {showModal && createPortal(<EditModal onClose={() => setShowModal(false)} />, document.body)}
                     </div>
                 )
             })}

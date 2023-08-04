@@ -108,3 +108,37 @@ nav {
 	padding: 0.5rem;
 	width: 50%;
 }
+
+/* modal */
+.modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	background-image: linear-gradient(
+		to bottom,
+		rgb(255, 255, 255),
+		rgb(150, 255, 250)
+	);
+	border: 1px solid white;
+	border-radius: 1rem;
+	box-shadow: 5px 5px 10px -5px rgba(0, 0, 0, 1);
+	position: absolute;
+	width: 75vw;
+	top: 10%;
+	left: calc(50% - 37.5vw);
+	bottom: 10%;
+}
+
+.modal label {
+	align-self: flex-start;
+}
+
+.category-options {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
+	list-style: none;
+}
