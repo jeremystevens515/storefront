@@ -8,7 +8,7 @@ export default function Body() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/search" element={<SearchQuery />} />
-            <Route path="/manage" element={<ItemManager />} />
+            <Route path="/manager" element={<ItemManager />} />
         </Routes>
     );
 }

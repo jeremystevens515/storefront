@@ -58,3 +58,53 @@ nav {
 	width: 15rem;
 	height: 15rem;
 }
+
+/* item manager */
+
+.item-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.item-header {
+	align-self: start;
+}
+
+.item-body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.item-image {
+	width: 10rem;
+	height: 10rem;
+	border: 1px solid black;
+	border-radius: 0.5rem;
+}
+
+.item-content {
+	display: flex;
+	flex-direction: column;
+}
+
+.btn-container {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+.edit-btn {
+	background-image: linear-gradient(
+		to bottom right,
+		rgb(255, 255, 255) 0%,
+		rgb(200, 200, 200) 75%
+	);
+	border: none;
+	border-radius: 0.5rem;
+	box-shadow: 0.3rem 0.3rem 1rem -0.5rem rgb(0, 0, 0);
+	padding: 0.5rem;
+	width: 50%;
+}
