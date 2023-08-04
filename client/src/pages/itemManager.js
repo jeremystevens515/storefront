@@ -31,12 +31,13 @@ export default function ItemManager() {
                                 <p>Categories: {item.category.name}</p>
                                 <div className="btn-container">
                                     <button className="edit-btn" onClick={() => {
-                                        setShowModal(true);
+                                        const modal = document.getElementById(`modal_${item._id}`);
+                                        modal.showModal();
                                     }}>Edit</button>
                                 </div>
                             </div>
                         </div>
-                        {showModal && createPortal(<EditModal onClose={() => setShowModal(false)} />, document.body)}
+                        <EditModal id={`modal_${item._id}`} />
                     </div>
                 )
             })}
