@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useState, useEffect } from 'react';
+import { createContext, useContext, Provider } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_ITEMS } from '../utils/queries';
 
 import EditModal from '../components/editModal';
 
+const ItemContext = createContext({});
+
 export default function ItemManager() {
-    const [showModal, setShowModal] = useState(false);
+    const [displayModal, setDisplayModal] = useState(false);
+    const [modalItem, setModalItem] = useState({});
 
     const { loading, error, data } = useQuery(QUERY_ALL_ITEMS);
     if (loading) return <p>Loading...</p>;
@@ -31,13 +34,13 @@ export default function ItemManager() {
                                 <ul>Categories: {item.category.map((cat) => <li key={cat._id}>{cat.name}</li>)}</ul>
                                 <div className="btn-container">
                                     <button className="edit-btn" onClick={() => {
-                                        const modal = document.getElementById(`modal_${item._id}`);
-                                        modal.showModal();
+                                        setModalItem(item);
+                                        setDisplayModal(true);
                                     }}>Edit</button>
                                 </div>
                             </div>
                         </div>
-                        <EditModal id={`modal_${item._id}`} />
+                        {displayModal ? <EditModal itemData={modalItem} setDisplayModal={setDisplayModal} /> : null}
                     </div>
                 )
             })}
