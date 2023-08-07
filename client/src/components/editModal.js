@@ -19,7 +19,7 @@ export default function EditModal({ id }) {
                 <input type="text" id="image" name="image" />
                 <label htmlFor="category">Category:</label>
                 <ul className="category-options">
-                    {data.categories.map((category) => {
+                    {data.allCategories.map((category) => {
                         return (
                             <li key={category._id}>
                                 <input type="checkbox" id={category.name} name={category.name} />

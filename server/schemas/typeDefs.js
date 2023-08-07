@@ -26,10 +26,25 @@ type Category {
     items: [Item]
 }
 
+input ItemInput {
+    name: String
+    description: String
+    price: Int
+    image: String
+    category: [ID]
+}
+
 type Query {
-    users: [User]
-    items: [Item]
-    categories: [Category]
+    allUsers: [User]
+    user(_id: ID!): User
+    allItems: [Item]
+    item(_id: ID!): Item
+    allCategories: [Category]
+    category(_id: ID!): Category
+}
+
+type Mutation {
+    updateItem(_id: ID!, content: ItemInput!): Item
 }
 `;
 

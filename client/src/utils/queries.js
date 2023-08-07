@@ -1,19 +1,20 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ALL_ITEMS = gql`
-    query getItems {
-        items {
+    query Query {
+        allItems {
+        _id
+        name
+        description
+        price
+        category {
             _id
             name
-            description
-            price
-            category {
-                _id
-                name
-            }
-            image
         }
-    }`;
+        image
+        }
+    }
+  `;
 
 export const QUERY_ITEM = gql`
     query getItem($id: ID!) {
@@ -32,21 +33,10 @@ export const QUERY_ITEM = gql`
 `;
 
 export const QUERY_ALL_CATEGORIES = gql`
-    query getCategories {
-        categories {
-            _id
-            name
-            items {
-                _id
-                name
-                description
-                price
-                category {
-                    _id
-                    name
-                }
-                image
-            }
+    query AllCategories {
+        allCategories {
+        _id
+        name
         }
     }
 `;
