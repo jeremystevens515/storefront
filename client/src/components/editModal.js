@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from "@apollo/client"
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { QUERY_ALL_CATEGORIES } from "../utils/queries";
-import { KnownTypeNamesRule } from "graphql";
+import { UPDATE_ITEM } from "../utils/mutation";
 
 export default function EditModal({ itemData }) {
     // extract category IDs from itemData to use as the categories state
@@ -16,6 +16,8 @@ export default function EditModal({ itemData }) {
 
 
     const { loading, error, data } = useQuery(QUERY_ALL_CATEGORIES);
+    const [updateItem, { mutationLoading, mutationError, mutationData }] = useMutation(UPDATE_ITEM);
+
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message}</p>;
 
@@ -58,7 +60,18 @@ export default function EditModal({ itemData }) {
                 }}>Close</button>
                 <button className="form-btn" onClick={(event) => {
                     event.preventDefault();
-
+                    updateItem({
+                        variables: {
+                            id: itemData._id,
+                            content: {
+                                name: NameState,
+                                description: DescriptionState,
+                                price: PriceState,
+                                image: ImageState,
+                                category: CategoriesState
+                            }
+                        }
+                    });
                 }}>Save</button>
             </div>
         </form>
