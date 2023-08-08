@@ -1,15 +1,11 @@
 import { useState, useEffect } from 'react';
-import { createContext, useContext, Provider } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_ITEMS } from '../utils/queries';
 
 import EditModal from '../components/editModal';
 
-const ItemContext = createContext({});
-
 export default function ItemManager() {
-    const [displayModal, setDisplayModal] = useState(false);
-    const [modalItem, setModalItem] = useState({});
+    const [modalItem, setModalItem] = useState();
 
     const { loading, error, data } = useQuery(QUERY_ALL_ITEMS);
     if (loading) return <p>Loading...</p>;
@@ -35,15 +31,17 @@ export default function ItemManager() {
                                 <div className="btn-container">
                                     <button className="edit-btn" onClick={() => {
                                         setModalItem(item);
-                                        setDisplayModal(true);
+                                        document.querySelector('.edit-modal').showModal();
                                     }}>Edit</button>
                                 </div>
                             </div>
                         </div>
-                        {displayModal ? <EditModal itemData={modalItem} setDisplayModal={setDisplayModal} /> : null}
                     </div>
                 )
             })}
+            <dialog className="edit-modal">
+                {modalItem ? <EditModal itemData={modalItem} /> : null}
+            </dialog>
         </div>
     )
 };
