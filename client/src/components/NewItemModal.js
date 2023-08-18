@@ -40,6 +40,15 @@ export default function NewItemModal({ setCreatingItem }) {
 
     return (
         <form className="modal">
+            <div className="edit-modal-header">
+                <h2>Create New Item</h2>
+                <div>
+                    <button className="form-btn" onClick={() => {
+                        const modal = document.querySelector("#item-modal");
+                        modal.close();
+                    }}>X</button>
+                </div>
+            </div>
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" value={NameState} onChange={(e) => setNameState(e.target.value)} />
 
@@ -73,10 +82,6 @@ export default function NewItemModal({ setCreatingItem }) {
                 })}
             </ul>
             <div className="modal-btn-container">
-                <button className="form-btn" onClick={() => {
-                    const modal = document.querySelector("#item-modal");
-                    modal.close();
-                }}>Close</button>
                 <button className="form-btn" onClick={handleCreateItem}>Save</button>
             </div>
         </form>

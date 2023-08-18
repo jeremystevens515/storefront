@@ -62,7 +62,7 @@ export default function ItemManager() {
                     </div>
                 )
             })}
-            <dialog id="edit-modal" className="modal">
+            <dialog id="edit-modal">
                 {modalItem ? <EditModal itemData={modalItem} /> : null}
             </dialog>
         </div>

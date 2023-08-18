@@ -11,12 +11,13 @@ export default function EditModal({ itemData }) {
     const [NameState, setNameState] = useState(itemData.name);
     const [DescriptionState, setDescriptionState] = useState(itemData.description);
     const [PriceState, setPriceState] = useState(itemData.price);
-    const [ImageState, setImageState] = useState(itemData.image);
+    const [ImageURLState, setImageURLState] = useState(itemData.image.url);
+    const [ImageAltState, setImageAltState] = useState(itemData.image.alt);
     const [CategoriesState, setCategoriesState] = useState(categoryIDs);
 
 
     const { loading, error, data } = useQuery(QUERY_ALL_CATEGORIES);
-    const [updateItem, { mutationLoading, mutationError, mutationData }] = useMutation(UPDATE_ITEM);
+    const [updateItem] = useMutation(UPDATE_ITEM);
     const [deleteItem] = useMutation(DELETE_ITEM);
 
     if (loading) return <p>Loading...</p>;
@@ -30,7 +31,10 @@ export default function EditModal({ itemData }) {
                     name: NameState,
                     description: DescriptionState,
                     price: PriceState,
-                    image: ImageState,
+                    image: {
+                        url: ImageURLState,
+                        alt: ImageAltState
+                    },
                     category: CategoriesState
                 }
             }
@@ -76,7 +80,10 @@ export default function EditModal({ itemData }) {
             <input type="text" id="price" name="price" value={PriceState} onChange={(e) => setPriceState(Number(e.target.value))} />
 
             <label htmlFor="image">Image URL:</label>
-            <input type="text" id="image" name="image" value={ImageState} onChange={(e) => setImageState(e.target.value)} />
+            <input type="text" id="image" name="image" value={ImageURLState} onChange={(e) => setImageURLState(e.target.value)} />
+
+            <label htmlFor="image">Image Alt:</label>
+            <input type="text" id="image" name="image" value={ImageAltState} onChange={(e) => setImageAltState(e.target.value)} />
 
             <label htmlFor="category">Category:</label>
             <ul className="category-options">
