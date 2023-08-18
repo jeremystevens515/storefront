@@ -31,11 +31,16 @@ type Image {
     alt: String
 }
 
+input ImageInput {
+    url: String
+    alt: String
+}
+
 input ItemInput {
     name: String
     description: String
     price: Int
-    image: String
+    image: ImageInput
     category: [ID]
 }
 
@@ -49,6 +54,7 @@ type Query {
 }
 
 type Mutation {
+    createItem(content: ItemInput!): Item
     updateItem(_id: ID!, content: ItemInput!): Item
 }
 `;

@@ -30,9 +30,13 @@ const resolvers = {
         },
     },
     Mutation: {
+        // create new item
+        createItem: async (parent, args, contextValue, info) => {
+            return await Item.create(args.content);
+        },
+
         // update item by id
         updateItem: async (parent, args, contextValue, info) => {
-            console.log(args);
             await Item.findByIdAndUpdate(
                 args._id,
                 {

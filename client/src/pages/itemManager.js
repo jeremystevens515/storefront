@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_ITEMS } from '../utils/queries';
 
@@ -6,6 +6,7 @@ import EditModal from '../components/EditModal';
 import QueryFilter from '../components/QueryFilter';
 import Sort from '../components/Sort';
 import SearchBar from '../components/SearchBar';
+import NewItem from '../components/NewItem';
 
 export default function ItemManager() {
     const [modalItem, setModalItem] = useState();
@@ -19,16 +20,13 @@ export default function ItemManager() {
             <h1>Item Manager</h1>
             <div className="manager-nav">
                 <div className="nav-section">
-                    <button className="new-item-btn">
-                        New Item
-                    </button>
+                    <NewItem />
                     <SearchBar />
                 </div>
                 <div className="nav-section">
                     <QueryFilter />
                     <Sort />
                 </div>
-
             </div>
             {data.allItems.map((item) => {
                 return (

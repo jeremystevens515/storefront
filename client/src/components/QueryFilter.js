@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { QUERY_ALL_CATEGORIES } from "../utils/queries";
 
 export default function QueryFilter() {
     const { loading, error, data } = useQuery(QUERY_ALL_CATEGORIES);
     const [CategoriesState, setCategoriesState] = useState([]);
     const [showSidebar, setShowSidebar] = useState(false);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error : {error.message}</p>;
 
     return (
         <div>
