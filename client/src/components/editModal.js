@@ -39,7 +39,7 @@ export default function EditModal({ itemData }) {
             <ul className="category-options">
                 {data.allCategories.map((category) => {
                     return (
-                        <li key={category._id}>
+                        <li key={category._id} className="category-option">
                             <input type="checkbox" id={category.name} name={category.name} checked={(CategoriesState.includes(category._id)) ? true : false}
                                 onChange={() => {
                                     if (CategoriesState.includes(category._id)) {
@@ -59,7 +59,6 @@ export default function EditModal({ itemData }) {
                     modal.close();
                 }}>Close</button>
                 <button className="form-btn" onClick={(event) => {
-                    event.preventDefault();
                     updateItem({
                         variables: {
                             id: itemData._id,

@@ -11,7 +11,10 @@ export const QUERY_ALL_ITEMS = gql`
             _id
             name
         }
-        image
+        image {
+            url
+            alt
+        }
         }
     }
   `;
@@ -27,7 +30,10 @@ export const QUERY_ITEM = gql`
                 _id
                 name
             }
-            image
+            image {
+                url
+                alt
+            }
         }
     }
 `;
@@ -55,7 +61,10 @@ export const QUERY_CATEGORY = gql`
                     _id
                     name
                 }
-                image
+                image {
+                    url
+                    alt
+                }
             }
         }
     }
@@ -80,13 +89,19 @@ export const QUERY_USER = gql`
                     _id
                     name
                 }
-                image
+                image {
+                    url
+                    alt
+                }
             }
             cart {
                 _id
                 name
                 price
-                image
+                image {
+                    url
+                    alt
+                }
             }
         }
     }

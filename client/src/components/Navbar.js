@@ -14,6 +14,9 @@ export default function Navbar() {
                     cart
                 </div>
             </div>
+            <div>
+                category dropdown
+            </div>
             <SearchBar />
         </nav>
     )

@@ -17,13 +17,18 @@ type Item {
     description: String
     price: Int
     category: [Category]
-    image: String
+    image: Image
 }
 
 type Category {
     _id: ID
     name: String
     items: [Item]
+}
+
+type Image {
+    url: String
+    alt: String
 }
 
 input ItemInput {
