@@ -54,7 +54,7 @@ export default function ItemManager() {
                                 <div className="btn-container">
                                     <button className="edit-btn" onClick={() => {
                                         setModalItem(item);
-                                        document.querySelector('.edit-modal').showModal();
+                                        document.querySelector("#edit-modal").showModal();
                                     }}>Edit</button>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@ export default function ItemManager() {
                     </div>
                 )
             })}
-            <dialog className="edit-modal">
+            <dialog id="edit-modal" className="modal">
                 {modalItem ? <EditModal itemData={modalItem} /> : null}
             </dialog>
         </div>

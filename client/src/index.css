@@ -163,6 +163,13 @@ button {
 	align-items: center;
 }
 
+.edit-modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
 .edit-btn {
 	width: 50%;
 }

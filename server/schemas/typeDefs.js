@@ -56,6 +56,7 @@ type Query {
 type Mutation {
     createItem(content: ItemInput!): Item
     updateItem(_id: ID!, content: ItemInput!): Item
+    deleteItem(_id: ID!) : Item
 }
 `;
 

@@ -34,5 +34,14 @@ mutation Mutation($id: ID!, $content: ItemInput!) {
       }
     }
   }
-  
+`;
+
+export const DELETE_ITEM = gql`
+mutation Mutation($id: ID!) {
+  deleteItem(_id: $id) {
+    _id
+    name
+    description
+  }
+}
 `;

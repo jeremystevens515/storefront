@@ -49,7 +49,12 @@ const resolvers = {
                     }
                 },
                 { new: true })
-        }
+        },
+
+        // delete item by id
+        deleteItem: async (parent, args, contextValue, info) => {
+            await Item.findOneAndDelete(args._id);
+        },
     }
 };
 
