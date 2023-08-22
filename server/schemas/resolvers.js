@@ -11,10 +11,25 @@ const resolvers = {
             return await User.findById(args._id);
         },
 
-        // get all items
-        allItems: async () => {
-            return await Item.find().populate('category');
+        // get all items with option to sort
+        allItems: async (parent, args, contextValue, info) => {
+            let sort = args.sort ? JSON.parse(args.sort) : {};
+
+            return await Item.find().sort(sort).populate('category');
         },
+        ItemsAtoZ: async () => {
+            return await Item.find().sort({ name: 1 }).populate('category');
+        },
+        ItemsZtoA: async () => {
+            return await Item.find().sort({ name: -1 }).populate('category');
+        },
+        ItemsPriceLowHigh: async () => {
+            return await Item.find().sort({ price: 1 }).populate('category');
+        },
+        ItemsPriceHighLow: async () => {
+            return await Item.find().sort({ price: -1 }).populate('category');
+        },
+
         // get item by id
         item: async (parent, args, contextValue, info) => {
             return await Item.findById(args._id).populate('category');

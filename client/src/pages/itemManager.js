@@ -1,6 +1,14 @@
 import { useState } from 'react';
-import { useQuery } from '@apollo/client';
-import { QUERY_ALL_ITEMS } from '../utils/queries';
+import { useQuery, useReactiveVar } from '@apollo/client';
+import {
+    QUERY_ALL_ITEMS,
+    QUERY_ITEM,
+    QUERY_ITEMS_A_TO_Z,
+    QUERY_ITEMS_Z_TO_A,
+    QUERY_ITEMS_PRICE_LOW_HIGH,
+    QUERY_ITEMS_PRICE_HIGH_LOW
+} from '../utils/queries';
+import { makeVar } from '@apollo/client';
 
 import EditModal from '../components/EditModal';
 import QueryFilter from '../components/QueryFilter';
@@ -10,8 +18,12 @@ import NewItem from '../components/NewItem';
 
 export default function ItemManager() {
     const [modalItem, setModalItem] = useState();
+    const [sortState, setSortState] = useState();
+    // const sortVar = makeVar();
+    // const reactiveSort = useReactiveVar(sortVar);
+    console.log("sortState: ", sortState);
 
-    const { loading, error, data } = useQuery(QUERY_ALL_ITEMS);
+    const { loading, error, data } = useQuery(QUERY_ALL_ITEMS, { variables: { sort: sortState } });
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message}</p>;
 
@@ -25,7 +37,7 @@ export default function ItemManager() {
                 </div>
                 <div className="nav-section">
                     <QueryFilter />
-                    <Sort />
+                    <Sort setSortState={setSortState} />
                 </div>
             </div>
             {data.allItems.map((item) => {

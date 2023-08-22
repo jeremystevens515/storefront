@@ -1,14 +1,21 @@
-export default function Sort() {
+export default function Sort({ setSortState }) {
+
+    const handleSort = (e) => {
+        e.preventDefault();
+        const data = e.target.value;
+        setSortState(data);
+    };
+
     return (
-        <div className="sort-container">
+        <form className="sort-container">
             <label htmlFor="sort">sort: </label>
-            <select name="sort" className="sort-dropdown" id="sort">
-                <option className="sort-option" value="all">All</option>
-                <option className="sort-option" value="price-low-high">Price Low to High</option>
-                <option className="sort-option" value="price-high-low">Price High to Low</option>
-                <option className="sort-option" value="name-a-z">Name A to Z</option>
-                <option className="sort-option" value="name-z-a">Name Z to A</option>
+            <select name="sort" className="sort-dropdown" id="sort" onChange={handleSort}>
+                <option className="sort-option" value={JSON.stringify({})}>All</option>
+                <option className="sort-option" value={JSON.stringify({ price: 1 })}>Price Low to High</option>
+                <option className="sort-option" value={JSON.stringify({ price: -1 })}>Price High to Low</option>
+                <option className="sort-option" value={JSON.stringify({ name: 1 })}>Name A to Z</option>
+                <option className="sort-option" value={JSON.stringify({ name: -1 })}>Name Z to A</option>
             </select>
-        </div>
+        </form>
     )
 }
