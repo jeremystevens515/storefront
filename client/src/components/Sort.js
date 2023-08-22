@@ -1,7 +1,6 @@
 export default function Sort({ setSortState }) {
 
     const handleSort = (e) => {
-        e.preventDefault();
         const data = e.target.value;
         setSortState(data);
     };

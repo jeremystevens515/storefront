@@ -17,18 +17,6 @@ const resolvers = {
 
             return await Item.find().sort(sort).populate('category');
         },
-        ItemsAtoZ: async () => {
-            return await Item.find().sort({ name: 1 }).populate('category');
-        },
-        ItemsZtoA: async () => {
-            return await Item.find().sort({ name: -1 }).populate('category');
-        },
-        ItemsPriceLowHigh: async () => {
-            return await Item.find().sort({ price: 1 }).populate('category');
-        },
-        ItemsPriceHighLow: async () => {
-            return await Item.find().sort({ price: -1 }).populate('category');
-        },
 
         // get item by id
         item: async (parent, args, contextValue, info) => {
