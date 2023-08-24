@@ -52,7 +52,7 @@ type Query {
     item(_id: ID!): Item
 
     allCategories: [Category]
-    category(_id: ID!): Category
+    categoryByID(_id: ID!): Category
 }
 
 type Mutation {

@@ -2,6 +2,7 @@ const { User, Item, Category } = require('../models');
 
 const resolvers = {
     Query: {
+        // User queries
         // get all users
         allUsers: async () => {
             return await User.find();
@@ -11,6 +12,7 @@ const resolvers = {
             return await User.findById(args._id);
         },
 
+        // Item queries
         // get all items with option to sort
         allItems: async (parent, args, contextValue, info) => {
             let sort = args.sort ? JSON.parse(args.sort) : {};
@@ -23,13 +25,14 @@ const resolvers = {
             return await Item.findById(args._id).populate('category');
         },
 
+        // Category queries
         // get all categories
         allCategories: async () => {
-            return await Category.find();
+            return await Category.find().populate('items');
         },
         // get category by id
-        category: async (parent, args, contextValue, info) => {
-            return await Category.findById(args._id);
+        categoryByID: async (parent, args, contextValue, info) => {
+            return await Category.findById(args._id).populate('items');
         },
     },
     Mutation: {
@@ -51,12 +54,13 @@ const resolvers = {
                         image: args.content.image
                     }
                 },
-                { new: true })
+                // { new: true }
+            )
         },
 
         // delete item by id
         deleteItem: async (parent, args, contextValue, info) => {
-            await Item.findOneAndDelete(args._id);
+            await Item.findByIdAndDelete(args._id);
         },
     }
 };

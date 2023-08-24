@@ -25,7 +25,10 @@ mutation Mutation($id: ID!, $content: ItemInput!) {
     updateItem(_id: $id, content: $content) {
       _id
       description
-      image
+      image {
+        url
+        alt
+      }
       name
       price
       category {

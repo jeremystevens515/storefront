@@ -38,82 +38,6 @@ export const QUERY_ITEM = gql`
     }
 `;
 
-export const QUERY_ITEMS_A_TO_Z = gql`
-    query ItemsAtoZ {
-        ItemsAtoZ {
-            _id
-            name
-            description
-            price
-            category {
-                _id
-                name
-            }
-            image {
-                url
-                alt
-            }
-        }
-    }
-`;
-
-export const QUERY_ITEMS_Z_TO_A = gql`
-    query ItemsZtoA {
-        ItemsZtoA {
-            _id
-            name
-            description
-            price
-            category {
-                _id
-                name
-            }
-            image {
-                url
-                alt
-            }
-        }
-    }
-`;
-
-export const QUERY_ITEMS_PRICE_LOW_HIGH = gql`
-    query ItemsPriceLowHigh {
-        ItemsPriceLowHigh {
-            _id
-            name
-            description
-            price
-            category {
-                _id
-                name
-            }
-            image {
-                url
-                alt
-            }
-        }
-    }
-`;
-
-export const QUERY_ITEMS_PRICE_HIGH_LOW = gql`
-    query ItemsPriceHighLow {
-        ItemsPriceHighLow {
-            _id
-            name
-            description
-            price
-            category {
-                _id
-                name
-            }
-            image {
-                url
-                alt
-            }
-        }
-    }
-`;
-
 export const QUERY_ALL_CATEGORIES = gql`
     query AllCategories {
         allCategories {
@@ -123,25 +47,25 @@ export const QUERY_ALL_CATEGORIES = gql`
     }
 `;
 
-export const QUERY_CATEGORY = gql`
-    query getCategory($id: ID!) {
-        category(_id: $id) {
+export const QUERY_CATEGORY_BY_ID = gql`
+    query CategoryByID($id: ID!) {
+        categoryByID(_id: $id) {
+        _id
+        name
+        items {
+            _id
+            category {
             _id
             name
-            items {
-                _id
-                name
-                description
-                price
-                category {
-                    _id
-                    name
-                }
-                image {
-                    url
-                    alt
-                }
             }
+            description
+            image {
+            alt
+            url
+            }
+            name
+            price
+        }
         }
     }
 `;
