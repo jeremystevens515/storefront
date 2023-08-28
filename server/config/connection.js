@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
+const atlasURL = "mongodb+srv://admin:Qaddyd-4dypsa-mivcuh@storefront.3kpboon.mongodb.net/?retryWrites=true&w=majority"
+
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/storefront',
+    atlasURL || 'mongodb://127.0.0.1:27017/storefront',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,

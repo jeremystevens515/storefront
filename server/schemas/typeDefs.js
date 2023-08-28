@@ -49,7 +49,8 @@ type Query {
     user(_id: ID!): User
 
     allItems(sort: String): [Item] 
-    item(_id: ID!): Item
+    itemByID(_id: ID!): Item
+    itemByName(name: String!): Item
 
     allCategories: [Category]
     categoryByID(_id: ID!): Category

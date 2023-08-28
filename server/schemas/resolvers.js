@@ -21,8 +21,13 @@ const resolvers = {
         },
 
         // get item by id
-        item: async (parent, args, contextValue, info) => {
+        itemByID: async (parent, args, contextValue, info) => {
             return await Item.findById(args._id).populate('category');
+        },
+
+        // get item by name
+        itemByName: async (parent, args, contextValue, info) => {
+            return await Item.findOne({ name: args.name }).populate('category');
         },
 
         // Category queries

@@ -38,6 +38,25 @@ export const QUERY_ITEM = gql`
     }
 `;
 
+export const QUERY_ITEM_BY_NAME = gql`
+    query Query($name: String!) {
+        itemByName(name: $name) {
+        _id
+        name
+        description
+        category {
+            _id
+            name
+        }
+        image {
+            alt
+            url
+        }
+        price
+        }
+    }
+`;
+
 export const QUERY_ALL_CATEGORIES = gql`
     query AllCategories {
         allCategories {
