@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ALL_ITEMS = gql`
-    query Query($sort: String) {
-        allItems(sort: $sort) {
+    query Query($sort: String, $name: String) {
+        allItems(sort: $sort, name: $name) {
         _id
         name
         description
@@ -38,24 +38,6 @@ export const QUERY_ITEM = gql`
     }
 `;
 
-export const QUERY_ITEM_BY_NAME = gql`
-    query Query($name: String!) {
-        itemByName(name: $name) {
-        _id
-        name
-        description
-        category {
-            _id
-            name
-        }
-        image {
-            alt
-            url
-        }
-        price
-        }
-    }
-`;
 
 export const QUERY_ALL_CATEGORIES = gql`
     query AllCategories {

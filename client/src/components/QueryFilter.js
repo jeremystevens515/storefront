@@ -5,11 +5,16 @@ import { QUERY_ALL_CATEGORIES } from "../utils/queries";
 
 export default function QueryFilter() {
     const { loading, error, data } = useQuery(QUERY_ALL_CATEGORIES);
-    const [CategoriesState, setCategoriesState] = useState([]);
+    const [CategoriesState, setCategoriesState] = useState(data?.allCategories.map((category) => category._id));
+    const [rangeState, setRangeState] = useState({ low: 0, high: 1000000 });
     const [showSidebar, setShowSidebar] = useState(false);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message}</p>;
+
+    const handleFilter = () => {
+        console.log("button clicked");
+    }
 
     return (
         <div>
@@ -36,6 +41,7 @@ export default function QueryFilter() {
                         })}
                     </ul>
                     <button onClick={() => setShowSidebar(false)}>close</button>
+                    <button onClick={handleFilter}>Apply</button>
                 </div>, window.document.body
             )}
         </div>

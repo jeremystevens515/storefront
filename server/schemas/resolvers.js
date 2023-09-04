@@ -16,18 +16,21 @@ const resolvers = {
         // get all items with option to sort
         allItems: async (parent, args, contextValue, info) => {
             let sort = args.sort ? JSON.parse(args.sort) : {};
+            let name = args.name ? args.name : "";
+            let rangeLow = args.rangeLow ? args.rangeLow : 0;
+            let rangeHigh = args.rangeHigh ? args.rangeHigh : 1000000;
+            let category = args.category;
 
-            return await Item.find().sort(sort).populate('category');
+            return await Item.find(
+                {
+                    name: { $regex: name, $options: 'i' }
+                }
+            ).sort(sort).populate('category');
         },
 
         // get item by id
         itemByID: async (parent, args, contextValue, info) => {
             return await Item.findById(args._id).populate('category');
-        },
-
-        // get item by name
-        itemByName: async (parent, args, contextValue, info) => {
-            return await Item.findOne({ name: args.name }).populate('category');
         },
 
         // Category queries
@@ -40,6 +43,7 @@ const resolvers = {
             return await Category.findById(args._id).populate('items');
         },
     },
+
     Mutation: {
         // create new item
         createItem: async (parent, args, contextValue, info) => {

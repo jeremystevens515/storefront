@@ -1,5 +1,5 @@
 body {
-	font-family: "Courier New", Courier, monospace;
+	font-family: "Arial", Courier, monospace;
 	background-image: linear-gradient(
 		to bottom,
 		rgb(225, 225, 255),
@@ -34,7 +34,6 @@ nav {
 	border: none;
 	border-radius: 1rem;
 	box-shadow: 0.3rem 0.3rem 1rem -0.5rem rgb(0, 0, 0);
-
 	width: 100%;
 	overflow: hidden;
 }
@@ -75,17 +74,18 @@ nav {
 /* item manager */
 .manager-nav {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	flex-direction: column;
+	/* justify-content: space-between;
+	align-items: center; */
 	margin: 0.1rem;
 	gap: 1rem;
 }
 
 .nav-section {
 	display: flex;
-	flex-direction: column;
+	/* flex-direction: column; */
 	gap: 0.5rem;
-	width: 50%;
+	width: 100%;
 }
 
 button {

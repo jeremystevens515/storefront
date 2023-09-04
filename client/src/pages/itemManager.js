@@ -1,16 +1,8 @@
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import {
-    QUERY_ALL_ITEMS,
-    QUERY_ITEM,
-    QUERY_ITEMS_A_TO_Z,
-    QUERY_ITEMS_Z_TO_A,
-    QUERY_ITEMS_PRICE_LOW_HIGH,
-    QUERY_ITEMS_PRICE_HIGH_LOW
-} from '../utils/queries';
+import { QUERY_ALL_ITEMS } from '../utils/queries';
 
 import EditModal from '../components/EditModal';
-import QueryFilter from '../components/QueryFilter';
 import Sort from '../components/Sort';
 import SearchBar from '../components/SearchBar';
 import NewItem from '../components/NewItem';
@@ -18,8 +10,9 @@ import NewItem from '../components/NewItem';
 export default function ItemManager() {
     const [modalItem, setModalItem] = useState();
     const [sortState, setSortState] = useState();
+    const [nameState, setNameState] = useState("");
 
-    const { loading, error, data } = useQuery(QUERY_ALL_ITEMS, { variables: { sort: sortState } });
+    const { loading, error, data } = useQuery(QUERY_ALL_ITEMS, { variables: { sort: sortState, name: nameState } });
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message}</p>;
 
@@ -28,15 +21,15 @@ export default function ItemManager() {
             <h1>Item Manager</h1>
             <div className="manager-nav">
                 <div className="nav-section">
-                    <NewItem />
-                    <SearchBar />
-                </div>
-                <div className="nav-section">
-                    <QueryFilter />
+                    <SearchBar setNameState={setNameState} />
                     <Sort setSortState={setSortState} />
                 </div>
+                <div>
+                    <NewItem />
+                </div>
             </div>
-            {data.allItems.map((item) => {
+            {!data ? <p>Begin query by clicking the search button</p> : null}
+            {data?.allItems.map((item) => {
                 return (
                     <div key={item._id} className="item-container">
                         <div className="item-header">
