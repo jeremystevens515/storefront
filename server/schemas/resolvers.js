@@ -8,8 +8,8 @@ const resolvers = {
             return await User.find();
         },
         // get user by id
-        user: async (parent, args, contextValue, info) => {
-            return await User.findById(args._id);
+        userByID: async (parent, args, contextValue, info) => {
+            return await User.findById(args._id).populate('interests');
         },
 
         // Item queries
@@ -17,9 +17,6 @@ const resolvers = {
         allItems: async (parent, args, contextValue, info) => {
             let sort = args.sort ? JSON.parse(args.sort) : {};
             let name = args.name ? args.name : "";
-            let rangeLow = args.rangeLow ? args.rangeLow : 0;
-            let rangeHigh = args.rangeHigh ? args.rangeHigh : 1000000;
-            let category = args.category;
 
             return await Item.find(
                 {
@@ -45,6 +42,36 @@ const resolvers = {
     },
 
     Mutation: {
+        // User mutations
+        // create new user
+        createUser: async (parent, args, contextValue, info) => {
+            return await User.create(args.content);
+        },
+
+        // update user by id
+        updateUser: async (parent, args, contextValue, info) => {
+            return await User.findByIdAndUpdate(
+                args._id,
+                {
+                    $set: {
+                        name: args.content.name,
+                        email: args.content.email,
+                        password: args.content.password,
+                        interests: args.content.interests,
+                        wishlist: args.content.wishlist,
+                        cart: args.content.cart
+                    }
+                },
+                { new: true }
+            ).populate('interests').populate('wishlist').populate('cart');
+        },
+
+        // delete user by id
+        deleteUser: async (parent, args, contextValue, info) => {
+            await User.findByIdAndDelete(args._id);
+        },
+
+        //Item mutations
         // create new item
         createItem: async (parent, args, contextValue, info) => {
             return await Item.create(args.content);

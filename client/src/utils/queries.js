@@ -1,5 +1,32 @@
 import { gql } from '@apollo/client';
 
+export const QUERY_USER = gql`
+    query getUser($id: ID!) {
+        userByID(_id: $id) {
+        _id
+        cart {
+            _id
+            name
+        }
+        email
+        interests {
+            _id
+            name
+        }
+        username
+        wishlist {
+            _id
+            name
+            image {
+            alt
+            url
+            }
+        }
+        }
+    }
+  
+`;
+
 export const QUERY_ALL_ITEMS = gql`
     query Query($sort: String, $name: String) {
         allItems(sort: $sort, name: $name) {
@@ -67,43 +94,6 @@ export const QUERY_CATEGORY_BY_ID = gql`
             name
             price
         }
-        }
-    }
-`;
-
-export const QUERY_USER = gql`
-    query getUser($id: ID!) {
-        user(_id: $id) {
-            _id
-            username
-            email
-            interests {
-                _id
-                name
-            }
-            wishlist {
-                _id
-                name
-                description
-                price
-                category {
-                    _id
-                    name
-                }
-                image {
-                    url
-                    alt
-                }
-            }
-            cart {
-                _id
-                name
-                price
-                image {
-                    url
-                    alt
-                }
-            }
         }
     }
 `;

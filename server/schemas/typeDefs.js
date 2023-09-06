@@ -36,6 +36,15 @@ input ImageInput {
     alt: String
 }
 
+input UserInput {
+    username: String
+    email: String
+    password: String
+    interests: [ID]
+    wishlist: [ID]
+    cart: [ID]
+}
+
 input ItemInput {
     name: String
     description: String
@@ -46,7 +55,7 @@ input ItemInput {
 
 type Query {
     allUsers: [User]
-    user(_id: ID!): User
+    userByID(_id: ID!): User
 
     allItems(sort: String, name: String): [Item] 
     itemByID(_id: ID!): Item
@@ -56,6 +65,10 @@ type Query {
 }
 
 type Mutation {
+    createUser(content: UserInput!): User
+    updateUser(_id: ID!, content: UserInput!): User
+    deleteUser(_id: ID!) : User
+
     createItem(content: ItemInput!): Item
     updateItem(_id: ID!, content: ItemInput!): Item
     deleteItem(_id: ID!) : Item
