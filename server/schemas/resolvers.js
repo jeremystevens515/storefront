@@ -79,7 +79,13 @@ const resolvers = {
 
         // update item by id
         updateItem: async (parent, args, contextValue, info) => {
-            await Item.findByIdAndUpdate(
+            // const set = {};
+            // const keys = Object.keys(args.content)
+
+            // keys.forEach((key) => args.content[key] ? set[key] = args.content[key] : null);
+
+            // find item by id and update content based on user input
+            const doc = await Item.findByIdAndUpdate(
                 args._id,
                 {
                     $set: {
@@ -89,9 +95,24 @@ const resolvers = {
                         category: args.content.category,
                         image: args.content.image
                     }
-                },
-                // { new: true }
-            )
+                }
+            );
+
+            // if the item's category array is different than the new incoming array
+            // new array is longer, new array is shorter, new array is same length but different values, new array is unchanged
+            const added = args.content.category ? args.content.category.filter(cat => !doc.category.includes(cat)) : null;
+            // const removed = doc.category ? doc.category.filter(cat => !args.content.category.includes(cat)) : null;
+            const removed = args.content.category ? !args.content.category.filter(cat => !doc.category.includes(cat)) : null;
+
+            console.log("added:", added);
+            console.log("removed", removed);
+
+            // if there are any IDs in the difference array, remove item from category
+            // if (difference) {
+            //     await difference.forEach(async (categoryID) => {
+            //         await model('Category').findByIdAndUpdate(categoryID, { $pull: { items: doc._id } });
+            //     });
+            // }
         },
 
         // delete item by id
