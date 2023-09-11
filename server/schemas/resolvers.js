@@ -1,3 +1,4 @@
+const { set } = require('mongoose');
 const { User, Item, Category } = require('../models');
 
 const resolvers = {
@@ -98,21 +99,45 @@ const resolvers = {
                 }
             );
 
-            // if the item's category array is different than the new incoming array
-            // new array is longer, new array is shorter, new array is same length but different values, new array is unchanged
-            const added = args.content.category ? args.content.category.filter(cat => !doc.category.includes(cat)) : null;
-            // const removed = doc.category ? doc.category.filter(cat => !args.content.category.includes(cat)) : null;
-            const removed = args.content.category ? !args.content.category.filter(cat => !doc.category.includes(cat)) : null;
+            // create sets from category arrays from the returned document and incomming changes
+            const previous = new Set(doc.category.map((el) => el.toString()));
+            const incomming = new Set(args.content.category.map((el) => el.toString()));
+
+            // create function to return uncommon elements between two sets
+            const getSymmetricDifference = (setA, setB) => {
+                const differenceA = [...setA].filter(el => !setB.has(el));
+                const differenceB = [...setB].filter(el => !setA.has(el));
+                return [...differenceA, ...differenceB];
+            }
+
+            // call function to create a new array containing uncommon elements between argument sets
+            const symmetricDifference = new Set(getSymmetricDifference(previous, incomming));
+
+            const added = [...symmetricDifference].filter(el => !previous.has(el));
+            const removed = [...symmetricDifference].filter(el => !incomming.has(el));
 
             console.log("added:", added);
-            console.log("removed", removed);
+            console.log("removed:", removed);
 
-            // if there are any IDs in the difference array, remove item from category
-            // if (difference) {
-            //     await difference.forEach(async (categoryID) => {
-            //         await model('Category').findByIdAndUpdate(categoryID, { $pull: { items: doc._id } });
-            //     });
-            // }
+            // if there are added categories, add item to category
+            if (added.length > 0) {
+                added.forEach(async (el) => {
+                    await Category.findByIdAndUpdate(
+                        el,
+                        { $push: { items: doc._id } }
+                    );
+                });
+            }
+
+            // if there are removed categories, remove item from category
+            if (removed.length > 0) {
+                removed.forEach(async (el) => {
+                    await Category.findByIdAndUpdate(
+                        el,
+                        { $pull: { items: doc._id } }
+                    );
+                });
+            }
         },
 
         // delete item by id
